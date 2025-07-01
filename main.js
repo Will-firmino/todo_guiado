@@ -13,6 +13,7 @@ const criarTarefa = (evento) => {
     
     tarefa.innerHTML = conteudo;
     tarefa.appendChild(BotaoConclui());
+    tarefa.appendChild(BotaoDeleta());
     lista.appendChild(tarefa);
     input.value = " ";
 };
@@ -24,12 +25,35 @@ novaTarefa.addEventListener('click', criarTarefa);
 
 const BotaoConclui = () => {
     const botaoConclui = document.createElement('button');
-    botaoConclui.classList.add('check-button');
 
-    botaoConclui.addEventListener('click', () => {
-        console.log('fui clicado');
-    })
+    botaoConclui.classList.add('check-button');
+    botaoConclui.innerText = 'concluir';
+
+    botaoConclui.addEventListener('click', concluirTarefa);
 
     return botaoConclui;
+}
+
+const concluirTarefa = (evento) => {
+    const eventoBotao = evento.target;
+    const tarefaCompleta = eventoBotao.parentElement;
+
+    tarefaCompleta.classList.toggle('done');
+}
+
+const BotaoDeleta = () => {
+    const botaoDeleta = document.createElement('button');
+
+    botaoDeleta.innerText = 'deletar';
+    botaoDeleta.addEventListener('click', deletarTarefa);
+
+    return botaoDeleta;
+}
+
+const deletarTarefa = (evento) => {
+    const deletaEvento = evento.target;
+
+    const tarefaDeletada = deletaEvento.parentElement;
+    tarefaDeletada.remove();
 
 }
