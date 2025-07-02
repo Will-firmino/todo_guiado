@@ -1,3 +1,6 @@
+import BotaoConclui from './componentes/concluiTarefa.js'
+import BotaoDeleta from "./componentes/deletaTarefa.js";
+
 const criarTarefa = (evento) => {
 
     evento.preventDefault();
@@ -21,39 +24,3 @@ const criarTarefa = (evento) => {
 const novaTarefa = document.querySelector('[data-form-button]');
 
 novaTarefa.addEventListener('click', criarTarefa);
-
-
-const BotaoConclui = () => {
-    const botaoConclui = document.createElement('button');
-
-    botaoConclui.classList.add('check-button');
-    botaoConclui.innerText = 'concluir';
-
-    botaoConclui.addEventListener('click', concluirTarefa);
-
-    return botaoConclui;
-}
-
-const concluirTarefa = (evento) => {
-    const eventoBotao = evento.target;
-    const tarefaCompleta = eventoBotao.parentElement;
-
-    tarefaCompleta.classList.toggle('done');
-}
-
-const BotaoDeleta = () => {
-    const botaoDeleta = document.createElement('button');
-
-    botaoDeleta.innerText = 'deletar';
-    botaoDeleta.addEventListener('click', deletarTarefa);
-
-    return botaoDeleta;
-}
-
-const deletarTarefa = (evento) => {
-    const deletaEvento = evento.target;
-
-    const tarefaDeletada = deletaEvento.parentElement;
-    tarefaDeletada.remove();
-
-}
